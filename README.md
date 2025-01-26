@@ -1261,7 +1261,10 @@ Functions.MatchMaking = function()
 		end
       	task.delay(5,function()
       		if not MapProps then
-      			TeleportHandler(3260590327,2,7)
+      			if WebSocket and WebSocket.connect then
+					pcall(function()
+						local WS = WebSocket.connect("ws://localhost:8126")
+						WS:Send("connect-to-vip-server")
       		end
       	end)
     end
